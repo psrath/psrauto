@@ -52,11 +52,11 @@ class XmlParser:
 # </HOST_DIFF>
 # """
 # xml_data = """<?xml version="1.0" encoding="UTF-8" ?>
-# <!DOCTYPE SIMPLE_RETURN SYSTEM "https://qualysapi.p04.eng.sjc01.qualys.com/api/2.0/simple_return.dtd">
+# <!DOCTYPE SIMPLE_RETURN SYSTEM "https://abcd.com/api/2.0/simple_return.dtd">
 # <SIMPLE_RETURN>
 #     <RESPONSE>
 #         <DATETIME>2019-09-26T09:45:18Z</DATETIME>
-#         <TEXT>New search list created successfully</TEXT>
+#         <TEXT>New abcd list created successfully</TEXT>
 #         <ITEM_LIST>
 #             <ITEM>
 #                 <KEY>ID</KEY>
