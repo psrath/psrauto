@@ -40,7 +40,7 @@ class SendReportEmail:
         SUBJECT = self.subject
         msg = MIMEMultipart()
         msg['Subject'] = SUBJECT
-        msg['From'] = "qbep-microservice@qualys.com"
+        msg['From'] = "abcd@gmail.com"
         msg['To'] = ', '.join(self.to)
         html = """\
         <html>
@@ -48,7 +48,7 @@ class SendReportEmail:
           <body>
           <table>
             <tr><td><b>Hi All,</b></td></tr>
-            <tr><td>Please Find attached report of QID Service</td></tr>
+            <tr><td>Please Find attached report of ABC Service</td></tr>
             <tr><td><i>Download the report to view in proper format</i></td></tr>
             <tr><td><br></td></tr>
             <tr><td><table style="width: 594px; height: 61px;">
@@ -80,7 +80,7 @@ class SendReportEmail:
             <tr><td><br>
             Thanks,
             <br>
-            Mayur Mistry
+            Purnendu Rath
             </td></tr>
             </table>
           </body>
@@ -96,4 +96,4 @@ class SendReportEmail:
         server = smtplib.SMTP('localhost')
         server.sendmail(msg['From'], self.to, msg.as_string())
 
-#send_mail ("QBEP-Report","mamistry@qualys.com","/API_Automation/pytest-qbep-automation/reports/report.html")
+#send_mail ("ABC-Report","parath@hotmail","/API_Automation/automation/reports/report.html")
