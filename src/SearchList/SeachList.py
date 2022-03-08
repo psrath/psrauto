@@ -15,12 +15,12 @@ def create_dynamic_search_list(api_client, other_params, calltype=None):
         "comments": "Dynamic SL Created for QID Service"
     }
     params.update(other_params)
-    res = api_client.qualys_api_call("POST", "/api/2.0/fo/qid/search_list/dynamic/", params, calltype)
+    res = api_client.qualys_api_call("POST", "/api/2.0/fo/abcd/search_list/dynamic/", params, calltype)
     if res.status_code != 200:
         if calltype == "qweb":
-            print("Invalid Status Code returned by QWEB API")
+            print("Invalid Status Code returned byAPI")
         if calltype == "qid":
-            print("Invalid Status Code returned by QID-service API")
+            print("Invalid Status Code returned by service API")
         print(res.text)
         return False
     return XmlParser(res.text).get_element_text('//VALUE')
@@ -31,12 +31,12 @@ def create_static_search_list(api_client, other_param,calltype):
         "action": "create",
         "title": title,
         "global": "1",
-        "comments": "Static SL Created for QID Service"
+        "comments": "Static SL Created forService"
     }
     params.update(other_param)
     res = api_client.qualys_api_call("POST", "/api/2.0/fo/qid/search_list/static/", params, calltype)
     if res.status_code != 200:
-        print("Invalid Status Code returned by QWEB API")
+        print("Invalid Status Code returned by API")
         print(res.text)
         return False
     return XmlParser(res.text).get_element_text('//VALUE')
@@ -48,9 +48,9 @@ def delete_dynamic_search_list(sl_id, api_client, calltype):
         "action": "delete",
         "id": sl_id
     }
-    res = api_client.qualys_api_call("POST", "/api/2.0/fo/qid/search_list/dynamic/", params, calltype)
+    res = api_client.qualys_api_call("POST", "/api/2.0/fo/abcd/search_list/dynamic/", params, calltype)
     if res.status_code != 200:
-        print("Invalid Status Code returned by QWEB API")
+        print("Invalid Status Code returned by  API")
         print(res.text)
         return False
     return XmlParser(res.text).get_element_text('//VALUE')
@@ -60,10 +60,10 @@ def list_static_search_list(api_client,sl_id,callType):
         "action": "list",
         "ids": sl_id
     }
-    res = api_client.qualys_api_call("GET", "/api/2.0/fo/qid/search_list/static/", params, callType)
+    res = api_client.qualys_api_call("GET", "/api/2.0/fo/abc/search_list/static/", params, callType)
     cnt = XmlParser(res.text).get_element_count('//QID')
     if res.status_code != 200:
-        print("Invalid Status Code returned by QWEB API")
+        print("Invalid Status Code returned by  API")
         print(res.text)
         return False
     return cnt
@@ -73,9 +73,9 @@ def delete_static_search_list(api_client,sl_id,callType):
         "action": "delete",
         "ids": sl_id
     }
-    res = api_client.qualys_api_call("GET", "/api/2.0/fo/qid/search_list/static/", params, callType)
+    res = api_client.qualys_api_call("GET", "/api/2.0/fo/abc/search_list/static/", params, callType)
     if res.status_code != 200:
-        print("Invalid Status Code returned by QWEB API")
+        print("Invalid Status Code returned by API")
         return False
     return True
 
@@ -87,9 +87,9 @@ def update_static_search_list(api_client,other_params, sl_id, calltype):
         "global": "1"
     }
     params.update(other_params)
-    res = api_client.qualys_api_call("POST", "/api/2.0/fo/qid/search_list/static/", params,calltype)
+    res = api_client.qualys_api_call("POST", "/api/2.0/fo/abc/search_list/static/", params,calltype)
     if res.status_code != 200:
-        print("Invalid Status Code returned by QWEB API")
+        print("Invalid Status Code returned by  API")
         print(res.text)
         return False
     return True
@@ -101,13 +101,13 @@ def get_qweb_search_list(api_client, sl_id, calltype):
         #"show_qids": "1"
     }
     if calltype=="qweb":
-        print("Calling QWEB API------------\n")
+        print("Calling  API------------\n")
     else:
         print("Calling Service API------------\n")
 
-    res = api_client.qualys_api_call("GET", "/api/2.0/fo/qid/search_list/dynamic/index.php", params, calltype)
+    res = api_client.qualys_api_call("GET", "/api/2.0/fo/abbc/search_list/dynamic/index.php", params, calltype)
     if res.status_code != 200:
-        print("Invalid Status Code returned by QWEB API\n")
+        print("Invalid Status Code returned by  API\n")
         print(res.text)
         return False
     return res.text
@@ -129,12 +129,12 @@ def qid_update_or_list_reset(api_client, qid, calltype, action_value, sevirity=N
         params["qid"] = params.pop("params")
         params.pop("severity")
     if calltype=='qweb':
-        print("Calling QWEB API------------\n")
+        print("Calling  API------------\n")
     else:
         print("Calling Service API------------\n")
-    res = api_client.qualys_api_call("POST", "/api/2.0/fo/knowledge_base/vuln/", params, calltype)
+    res = api_client.qualys_api_call("POST", "/api/2.0/fo/base/vuln/", params, calltype)
     if res.status_code != 200:
-        print("Invalid Status Code returned by QWEB API")
+        print("Invalid Status Code returned by  API")
         print(res.text)
         return False
     return res.text
@@ -198,7 +198,7 @@ def get_qid_service_search_list(api_client, common_functions, sl_id):
         "X-Access-Token": access_token
     }
     res = api_client.qid_service_api_call("GET", "/resolve", params, headers)
-    assert res.status_code == 200, "Invalid Status Code returned by QID-Service API"
+    assert res.status_code == 200, "Invalid Status Code returned by Service API"
     return res.text
 
 def get_qid_service_search_list_bulk(api_client, common_functions, sl_id):
@@ -216,7 +216,7 @@ def get_qid_service_search_list_bulk(api_client, common_functions, sl_id):
     #     "X-Requested-With": access_token
     # }
     res = api_client.qid_service_api_call("GET", "/resolve/bulk", params)
-    assert res.status_code == 200, "Invalid Status Code returned by QID API"
+    assert res.status_code == 200, "Invalid Status Code returned by  API"
     return res.text
 
 def get_qid_service_search_list_resolvecall(api_client, common_functions, sl_id):
@@ -234,7 +234,7 @@ def get_qid_service_search_list_resolvecall(api_client, common_functions, sl_id)
     #     "X-Requested-With": access_token
     # }
     res = api_client.qid_service_api_call("GET", "/resolve/paged", params)
-    assert res.status_code == 200, "Invalid Status Code returned by QID API"
+    assert res.status_code == 200, "Invalid Status Code returned by API"
     return res.text
 
 
