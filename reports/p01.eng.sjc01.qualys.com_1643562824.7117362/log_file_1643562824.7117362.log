@@ -1,0 +1,16 @@
+executing test cases from module: TestSeachListResolve333
+D:\git\qid-service\src\test\qid-service-automation/reports/p01.eng.sjc01.qualys.com_1643562824.7117362/QID_Service_Report.html
+['D:\\git\\qid-service\\src\\test\\qid-service-automation/tests/', '-rap', '-m TestSeachListResolve333', '--html=D:\\git\\qid-service\\src\\test\\qid-service-automation/reports/p01.eng.sjc01.qualys.com_1643562824.7117362/QID_Service_Report.html', '--self-contained-html', '--conf_file=D:\\git\\qid-service\\src\\test\\qid-service-automation/config/config_p04.cfg', '--op_path=D:\\git\\qid-service\\src\\test\\qid-service-automation/reports/p01.eng.sjc01.qualys.com_1643562824.7117362/']
+================================================= test session starts ==================================================
+platform win32 -- Python 3.6.7rc2, pytest-4.0.1, py-1.7.0, pluggy-0.8.0
+rootdir: D:\git\qid-service\src\test\qid-service-automation, inifile:
+plugins: metadata-1.7.0, html-1.19.0
+collected 289 items / 288 deselected
+
+..\Test QID-Service Endpoints- TC 11 - Verify CVE Centric API Call validation qvsMin>qvsMax value .               [100%]
+
+ generated html file: D:\git\qid-service\src\test\qid-service-automation\reports\p01.eng.sjc01.qualys.com_1643562824.7117362\QID_Service_Report.html 
+=============================================== short test summary info ================================================
+PASSED ..\Test QID-Service Endpoints- TC 11 - Verify CVE Centric API Call validation qvsMin>qvsMax value
+======================================= 1 passed, 288 deselected in 6.46 seconds =======================================
+1.10.1.0-4

@@ -1,0 +1,10 @@
+QWEB Backend Processing
+python3 run.py -config config_p04.cfg -modules TestSeachListResolve
+
+python src/test/qid-service-automation/bin/run.py -config config_p04.cfg -modules TestSeachListResolve
+
+python src/test/qid-service-automation/bin/run.py -config config_p04.cfg -modules TestSingleSeachListResolve
+
+python src/test/qid-service-automation/bin/run.py -config config_p04.cfg -modules TestTouchAllSeachListResolve
+
+

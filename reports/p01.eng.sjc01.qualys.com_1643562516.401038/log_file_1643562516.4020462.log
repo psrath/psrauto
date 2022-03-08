@@ -1,0 +1,51 @@
+executing test cases from module: TestSeachListResolve333
+D:\git\qid-service\src\test\qid-service-automation/reports/p01.eng.sjc01.qualys.com_1643562516.401038/QID_Service_Report.html
+['D:\\git\\qid-service\\src\\test\\qid-service-automation/tests/', '-rap', '-m TestSeachListResolve333', '--html=D:\\git\\qid-service\\src\\test\\qid-service-automation/reports/p01.eng.sjc01.qualys.com_1643562516.401038/QID_Service_Report.html', '--self-contained-html', '--conf_file=D:\\git\\qid-service\\src\\test\\qid-service-automation/config/config_p04.cfg', '--op_path=D:\\git\\qid-service\\src\\test\\qid-service-automation/reports/p01.eng.sjc01.qualys.com_1643562516.401038/']
+================================================= test session starts ==================================================
+platform win32 -- Python 3.6.7rc2, pytest-4.0.1, py-1.7.0, pluggy-0.8.0
+rootdir: D:\git\qid-service\src\test\qid-service-automation, inifile:
+plugins: metadata-1.7.0, html-1.19.0
+collected 289 items / 288 deselected
+
+..\Test QID-Service Endpoints- TC 11 - Verify CVE Centric API Call validation qvsMin>qvsMax value F               [100%]
+
+======================================================= FAILURES =======================================================
+_________________________________________ TestSeachListResolve333.test_CVE_11 __________________________________________
+
+self = <tests.test_update_test.TestSeachListResolve333 object at 0x0000023219BFCC50>
+api_client = <src.ApiClient.ApiClient object at 0x0000023219A21160>
+common_functions = <src.CommonFunctions.CommonFunctions object at 0x0000023219BD3CC0>
+op_path = 'D:\\git\\qid-service\\src\\test\\qid-service-automation/reports/p01.eng.sjc01.qualys.com_1643562516.401038/'
+dbo = <src.DbConnector.DbConnector object at 0x0000023219BDC390>
+
+    def test_CVE_11(self, api_client, common_functions, op_path, dbo):
+        """TC 11 - Verify CVE Centric API Call validation qvsMin>qvsMax value"""
+        uri = "/qvs/1.0/search"
+        params = {"cve": self.CVE_ID, "details": "All","qvsMin": 100, "qvsMax": 0}
+        result = str(SeachList.verify_qid_service_CVE_call(api_client, common_functions, params, uri))
+        res = JsonParser(result).key_exists_in_json("error")
+        print("Eror::{}".format(res))
+        if not result:
+            test = True
+        else:
+            test = False
+>       assert test,"Failed To Get API Response"
+E       AssertionError: Failed To Get API Response
+E       assert False
+
+..\tests\test_update_test.py:146: AssertionError
+------------------------------------------------- Captured stdout call -------------------------------------------------
+=========URL passed:/qvs/1.0/search
+CallType params value::qid
+Params========= {'cve': 'CVE-2021-36765', 'details': 'All', 'qvsMin': 100, 'qvsMax': 0}
+curl -X 'POST' -H 'Accept: application/json' -H 'Accept-Chargeset: UTF-8' -H 'Accept-Encoding: gzip, deflate' -H 'Authorization: Basic cmtzYmFfeXA0OlFAdGVtcDEyMw==' -H 'Connection: keep-alive' -H 'Content-Length: 71' -H 'Content-Type: application/json' -H 'User-Agent: python-requests/2.25.0' -H 'X-Access-Token: 3U0U81N5B4Q0T0O9G9MUECggMkAXnFIVquqLMzoKQH' -H 'X-Requested-With: 3U0U81N5B4Q0T0O9G9MUECggMkAXnFIVquqLMzoKQH' -d '{"cve": "CVE-2021-36765", "details": "All", "qvsMin": 100, "qvsMax": 0}' 'http://qids.p01.eng.sjc01.qualys.com:50261/qvs/1.0/search'
+<Response [400]>
+Status Code Return by QID-service::400
+AssertionError('Invalid Status Code returned by QID-Service API',)
+Status Code Return by QID-service::400
+Eror::True
+ generated html file: D:\git\qid-service\src\test\qid-service-automation\reports\p01.eng.sjc01.qualys.com_1643562516.401038\QID_Service_Report.html 
+=============================================== short test summary info ================================================
+FAIL ..\Test QID-Service Endpoints- TC 11 - Verify CVE Centric API Call validation qvsMin>qvsMax value
+======================================= 1 failed, 288 deselected in 5.89 seconds =======================================
+1.10.1.0-4
